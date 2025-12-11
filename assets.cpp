@@ -28,6 +28,7 @@ void unload_textures()
     UnloadTexture(block_texture);
     UnloadTexture(paddle_texture);
     unload_sprite(ball_sprite);
+
 }
 
 void load_sounds()
@@ -35,11 +36,15 @@ void load_sounds()
     InitAudioDevice();
     win_sound = LoadSound("data/sounds/win.wav");
     lose_sound = LoadSound("data/sounds/lose.wav");
+    game_sound = LoadSound("data/sounds/GameSound.mp3");
+
 }
 
 void unload_sounds()
 {
     UnloadSound(win_sound);
     UnloadSound(lose_sound);
+    UnloadSound(game_sound);
+
     CloseAudioDevice();
 }
