@@ -10,6 +10,7 @@ inline Vector2 paddle_pos;
 
 void spawn_paddle();
 void move_paddle(float x_offset);
+void move_paddle2(float y_offset);
 bool is_colliding_with_paddle(Vector2 pos, Vector2 size);
 
 #endif // PADDLE_H

@@ -14,4 +14,4 @@ void spawn_ball();
 void move_ball();
 bool is_ball_inside_level();
 
-#endif // BALL_H
+#endif

@@ -109,7 +109,7 @@ void draw_menu()
         "Breakout",
         { 0.50f, 0.50f },
         200.0f,
-        RED,
+        VIOLET,
         4.0f,
         &menu_font
     };
@@ -194,7 +194,7 @@ void draw_pause_menu()
         "Press Escape to Resume",
         { 0.50f, 0.50f },
         32.0f,
-        WHITE,
+        VIOLET,
         4.0f,
         &menu_font
     };
@@ -235,14 +235,14 @@ void draw_victory_menu()
     DrawRectangleV({ 0.0f, 0.0f }, { screen_size.x, screen_size.y }, { 0, 0, 0, 50 });
 
     for (const auto& [x, y] : victory_balls_pos) {
-        DrawCircleV({ x, y }, victory_balls_size, WHITE);
+        DrawCircleV({ x, y }, victory_balls_size, VIOLET);
     }
 
     const Text victory_title = {
         "Victory!",
         { 0.50f, 0.50f },
         100.0f,
-        RED,
+        VIOLET,
         4.0f,
         &menu_font
     };
@@ -252,7 +252,7 @@ void draw_victory_menu()
         "Press Enter to Restart",
         { 0.50f, 0.65f },
         32.0f,
-        WHITE,
+        VIOLET,
         4.0f,
         &menu_font
     };

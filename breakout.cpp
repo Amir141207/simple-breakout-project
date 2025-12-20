@@ -9,46 +9,54 @@
 
 void update()
 {
-    SetExitKey(KEY_NULL);
-    if (game_state == menu_state){
-        if (IsKeyPressed(KEY_ENTER)) {
-            game_state = in_game_state;
-            PlaySound(game_sound);
-        }
+    switch(game_state) {
+        case menu_state:
+            if (IsKeyPressed(KEY_ENTER)) {
+                SetExitKey(0);
+                game_state = in_game_state;
+                load_level(0);
+                PlaySound(game_sound);
 
+            }
+            break;
+        case in_game_state:
+            if (IsKeyDown(KEY_W) || IsKeyDown(KEY_UP)) {
+                move_paddle2(-paddle_speed);
+            }
+            if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN)) {
+                move_paddle2(paddle_speed);
+            }
+            if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
+                move_paddle(-paddle_speed);
+            }
+            if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) {
+                move_paddle(paddle_speed);
+            }
+            move_ball();
+            if (!is_ball_inside_level()) {
+                load_level();
+                PlaySound(lose_sound);
+            } else if (current_level_blocks == 0) {
+                load_level(1);
+                PlaySound(win_sound);
+            }
+            if (IsKeyDown(KEY_ESCAPE)) {
+                game_state = paused_state;
 
-    }
-
-    if (game_state == paused_state) {
-        if (IsKeyPressed(KEY_ENTER)){
-            game_state = in_game_state;
-        }
-    }
-
-    if (IsKeyDown(KEY_ESCAPE)) {
-        game_state = paused_state;
-    }
-
-    if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
-        move_paddle(-paddle_speed);
-    }
-    if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) {
-        move_paddle(paddle_speed);
-    }
-    move_ball();
-    if (!is_ball_inside_level()) {
-        load_level();
-        PlaySound(lose_sound);
-    } else if (current_level_blocks == 0) {
-        load_level(1);
-        PlaySound(win_sound);
+            }
+            break;
+        case paused_state:
+            if (IsKeyPressed(KEY_ENTER)){
+                game_state = in_game_state;
+            }
+            break;
     }
 }
 
+
 void draw()
 {
-    // TODO
-    if (game_state == menu_state){
+     if (game_state == menu_state){
         draw_menu();
 
     } else if (game_state == in_game_state)
