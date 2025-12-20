@@ -19,7 +19,8 @@ enum game_state {
     menu_state,
     in_game_state,
     paused_state,
-    victory_state
+    victory_state,
+    end_state
 };
 
 inline char level_1_data[] = {

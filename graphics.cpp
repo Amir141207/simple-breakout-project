@@ -258,3 +258,33 @@ void draw_victory_menu()
     };
     draw_text(victory_subtitle);
 }
+void draw_end()
+{
+    animate_victory_menu();
+
+    DrawRectangleV({ 0.0f, 0.0f }, { screen_size.x, screen_size.y }, { 0, 0, 0, 50 });
+
+    for (const auto& [x, y] : victory_balls_pos) {
+        DrawCircleV({ x, y }, victory_balls_size, VIOLET);
+    }
+
+    const Text victory_title = {
+        "GAME OVER!",
+        { 0.50f, 0.50f },
+        100.0f,
+        VIOLET,
+        4.0f,
+        &menu_font
+    };
+    draw_text(victory_title);
+
+    const Text victory_subtitle = {
+        "Press Enter to Restart",
+        { 0.50f, 0.65f },
+        32.0f,
+        VIOLET,
+        4.0f,
+        &menu_font
+    };
+    draw_text(victory_subtitle);
+}

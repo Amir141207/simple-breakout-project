@@ -36,6 +36,7 @@ void update()
             if (!is_ball_inside_level()) {
                 load_level();
                 PlaySound(lose_sound);
+                game_state = end_state;
             } else if (current_level_blocks == 0) {
                 load_level(1);
                 PlaySound(win_sound);
@@ -50,6 +51,12 @@ void update()
                 game_state = in_game_state;
             }
             break;
+        case end_state:
+            if (IsKeyPressed(KEY_ENTER)){
+                game_state = in_game_state;
+            }
+
+
     }
 }
 
@@ -67,8 +74,10 @@ void draw()
         draw_ui();
     } else if(game_state == victory_state){
         draw_victory_menu();
-    }else if(game_state == paused_state){
+    }else if(game_state == paused_state) {
         draw_pause_menu();
+    }else if(game_state = end_state){
+       draw_end();
     }
 
 
