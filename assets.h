@@ -7,6 +7,8 @@
 
 inline Font menu_font;
 
+inline Texture2D back_texture;
+inline Texture2D imagine_texture;
 inline Texture2D wall_texture;
 inline Texture2D void_texture;
 inline Texture2D paddle_texture;

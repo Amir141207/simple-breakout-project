@@ -14,10 +14,12 @@ void unload_fonts()
 
 void load_textures()
 {
+    back_texture = LoadTexture("data/images/back.png");
+    imagine_texture = LoadTexture("data/images/8753.png");
     wall_texture = LoadTexture("data/images/wall.png");
     void_texture = LoadTexture("data/images/void.png");
-    block_texture = LoadTexture("data/images/block.png");
-    paddle_texture = LoadTexture("data/images/paddle.png");
+    block_texture = LoadTexture("data/images/block1.png");
+    paddle_texture = LoadTexture("data/images/paddle2.png");
     ball_sprite = load_sprite("data/images/fire/fire", ".png", 8, true, 10);
 }
 
@@ -28,6 +30,10 @@ void unload_textures()
     UnloadTexture(block_texture);
     UnloadTexture(paddle_texture);
     unload_sprite(ball_sprite);
+    UnloadTexture(imagine_texture);
+    UnloadTexture(back_texture);
+
+
 
 }
 

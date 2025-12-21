@@ -104,7 +104,7 @@ void derive_graphics_metrics()
 void draw_menu()
 {
     ClearBackground(BLACK);
-
+    draw_image(back_texture, 0, 0, screen_size.x, screen_size.y);
     const Text game_title = {
         "Breakout",
         { 0.50f, 0.50f },
@@ -132,17 +132,17 @@ void draw_ui()
         "LEVEL " + std::to_string(current_level_index + 1) + " OUT OF " + std::to_string(level_count),
         { 0.5f, 0.0375f },
         48.0f,
-        WHITE,
+        VIOLET,
         4.0f,
         &menu_font
     };
     draw_text(level_counter);
 
     const Text boxes_remaining = {
-        "BLOCKS " + std::to_string(current_level_blocks),
+        "ALIENS " + std::to_string(current_level_blocks),
         { 0.5f, 0.9625f },
         48.0f,
-        WHITE,
+        VIOLET,
         4.0f,
         &menu_font
     };
@@ -152,6 +152,7 @@ void draw_ui()
 void draw_level()
 {
     ClearBackground(BLACK);
+    draw_image(imagine_texture, 0, 0, screen_size.x, screen_size.y);
 
     for (size_t row = 0; row < current_level.rows; ++row) {
         for (size_t column = 0; column < current_level.columns; ++column) {
@@ -189,6 +190,8 @@ void draw_ball()
 void draw_pause_menu()
 {
     ClearBackground(BLACK);
+    draw_image(imagine_texture, 0, 0, screen_size.x, screen_size.y);
+    draw_image(back_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text paused_title = {
         "Press Escape to Resume",
@@ -230,6 +233,7 @@ void animate_victory_menu()
 
 void draw_victory_menu()
 {
+
     animate_victory_menu();
 
     DrawRectangleV({ 0.0f, 0.0f }, { screen_size.x, screen_size.y }, { 0, 0, 0, 50 });
@@ -267,6 +271,7 @@ void draw_end()
     for (const auto& [x, y] : victory_balls_pos) {
         DrawCircleV({ x, y }, victory_balls_size, VIOLET);
     }
+    draw_image(back_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text victory_title = {
         "GAME OVER!",
