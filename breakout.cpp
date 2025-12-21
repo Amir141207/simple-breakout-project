@@ -12,10 +12,12 @@ void update()
     switch(game_state) {
         case menu_state:
             if (IsKeyPressed(KEY_ENTER)) {
+                current_level_index = 0;
                 SetExitKey(0);
                 game_state = in_game_state;
                 load_level(0);
                 PlaySound(game_sound);
+
 
             }
             break;
@@ -34,9 +36,13 @@ void update()
             }
             move_ball();
             if (!is_ball_inside_level()) {
+                live--;
                 load_level();
-                PlaySound(lose_sound);
-                game_state = end_state;
+                if (live == 0){
+                    load_level();
+                    PlaySound(lose_sound);
+                    game_state = end_state;
+                }
             } else if (current_level_blocks == 0) {
                 load_level(1);
                 PlaySound(win_sound);
@@ -53,7 +59,9 @@ void update()
             break;
         case end_state:
             if (IsKeyPressed(KEY_ENTER)){
-                game_state = in_game_state;
+                live = 3;
+                game_state = menu_state;
+
             }
 
 
@@ -88,7 +96,6 @@ int main()
     SetConfigFlags(FLAG_VSYNC_HINT);
     InitWindow(1280, 720, "Breakout");
     SetTargetFPS(60);
-
     load_fonts();
     load_textures();
     load_level();

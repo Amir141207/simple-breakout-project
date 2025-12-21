@@ -3,7 +3,7 @@
 
 #include "raylib.h"
 
-inline constexpr Vector2 paddle_size = { 1.f, 0.7f };
+inline constexpr Vector2 paddle_size = { 3.f, 1.7f };
 inline constexpr float paddle_speed = 0.1f;
 
 inline Vector2 paddle_pos;

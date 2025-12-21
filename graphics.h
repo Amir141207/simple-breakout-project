@@ -3,6 +3,7 @@
 
 void derive_graphics_metrics();
 
+void draw_live();
 void draw_end();
 void draw_menu();
 void draw_ui();

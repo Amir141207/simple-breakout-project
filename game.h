@@ -7,8 +7,9 @@ constexpr char VOID = ' ';
 constexpr char WALL = '#';
 constexpr char BLOCKS = '@';
 constexpr char PADDLE = 'P';
-    constexpr char BOUNDARY = '!';
+constexpr char BOUNDARY = '!';
 constexpr char BALL = '*';
+inline int live = 3;
 
 struct level {
     size_t rows = 0, columns = 0;

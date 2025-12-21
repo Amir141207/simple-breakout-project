@@ -147,6 +147,12 @@ void draw_ui()
         &menu_font
     };
     draw_text(boxes_remaining);
+
+    for(int i = 0; i < live; i++) {
+        float livex = 30.f + i * 50.f;
+        float livey = 30.f;
+        draw_image(live_texture, livex, livey, cell_size + 30.f, cell_size + 30.f);
+    }
 }
 
 void draw_level()
@@ -191,7 +197,6 @@ void draw_pause_menu()
 {
     ClearBackground(BLACK);
     draw_image(imagine_texture, 0, 0, screen_size.x, screen_size.y);
-    draw_image(back_texture, 0, 0, screen_size.x, screen_size.y);
 
     const Text paused_title = {
         "Press Escape to Resume",
